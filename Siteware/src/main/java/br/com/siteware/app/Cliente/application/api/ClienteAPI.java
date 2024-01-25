@@ -6,7 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-
+import java.util.List;
 
 
 @RestController
@@ -17,5 +17,8 @@ public interface ClienteAPI {
     @ResponseStatus(value = HttpStatus.CREATED)
     ClienteResponse postCliente(@RequestBody @Valid ClienteRequest ClienteRequest);
 
+    @GetMapping(value = "/busca-todos-clientes")
+    @ResponseStatus(value = HttpStatus.OK)
+    List<ClienteListResponse> getTodosClientes();
 }
 

@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Log4j2
 @RequiredArgsConstructor
@@ -19,5 +21,13 @@ public class ClienteInfraRepository implements ClienteRepository {
         clientSpringDataJPARepository.save(cliente);
         log.info("[finish] ClienteInfraRepository - salvaCliente");
         return cliente;
+    }
+
+    @Override
+    public List<Cliente> buscaTodosClientes() {
+        log.info("[start] ClienteInfraRepository - buscaTodosClientes");
+        List<Cliente> todosClientes = clientSpringDataJPARepository.findAll();
+        log.info("[finish] ClienteInfraRepository - buscaTodosClientes");
+        return todosClientes;
     }
 }
