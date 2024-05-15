@@ -39,10 +39,7 @@ public class Carrinho implements Serializable {
         this.produtos = new ArrayList<>();
         this.dataHoraAbertura = LocalDateTime.now();
     }
-
-    public void adicionaProdutos(List<ProdutoCarrinhoRequest> produtos, ProdutoRespository produtoRepository) {
-        produtos.parallelStream().forEach(i -> adicionaProduto(i, produtoRepository));
-    }
+    
 
     public void adicionaProduto(ProdutoCarrinhoRequest produtoCarrinhoReq, ProdutoRespository produtoRepository) {
         var optionalProduto = produtoRepository.consultaProdutoOptionalAtravesId(produtoCarrinhoReq.getIdProduto());
